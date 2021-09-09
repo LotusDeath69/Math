@@ -86,8 +86,8 @@ def threeSlopes(x1, y1, x2, y2, x3, y3):
 
 
 def Yintercept(x, y, slope):
-    b = -1 * slope * x + y
-    return b
+    return -1 * slope * x + y
+
 
 if __name__ == "__main__":
     print(circumcenter(-2, 0, 2, 8, 7, 3))
