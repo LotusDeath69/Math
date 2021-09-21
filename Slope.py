@@ -48,4 +48,4 @@ def slopeLinear(x1, y1, x2, y2, Formatting=True, Verify=False, default=True):
                 return f'y = {formatDecimal(formatInt(m))}x + {formatDecimal(formatInt(y_intercept))}'
     else:
         return f'y = {m}x + {b}'
-# slopeLinear(0, 500, 200, 7000)
+# print(slopeLinear(3, 315, 7, 535))

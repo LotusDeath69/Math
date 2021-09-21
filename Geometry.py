@@ -5,7 +5,7 @@ from Slope import *
 from EquationSolver import nonLinearEquation
 
 def DistanceFormula(x1, y1, x2, y2):
-    return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2), f"sqrt {(x2-x1)**2+(y2-y1)**2}"
 
 
 def MidPointOfALine(x1, y1, x2, y2):
@@ -47,7 +47,7 @@ def Centroid(x1, y1, x2, y2, x3, y3):
 def PerpendicularBisector(x1, y1, x2, y2, default=True):
     (x, y), m = MidPointOfALine(x1, y1, x2, y2), negativeReciprocal(slopeLinear(x1, y1, x2, y2, default=False)[0])
     if default:
-        f"y = {m}x + {Yintercept(x, y, m)}"
+        return f"y = {m}x + {Yintercept(x, y, m)}"
     return m, Yintercept(x, y, m)
 
 
@@ -71,23 +71,44 @@ def negativeReciprocal(x):
     return 0
 
 
-def triangleType(m1, m2, m3, length1, length2, length3):
-    if negativeReciprocal(m1) == m2 or negativeReciprocal(m3) == m2 or negativeReciprocal(m1) == m3:
-        return "Right triangle"
-    elif length1 in [length2, length3] or length3 in [length1, length2]:
-        if (m1 + m2 + m3)/3 == m1:
-            return "Equalateral"
-        return "Isoscele"
-    return "Scalene"
+def triangleType(x1, y1, x2, y2, x3, y3):
+    a = threeSlopes(x1, y1, x2, y2, x3, y3, default=False)[::1]
+    for i in a:
+        print(i)
+    # print(a)
 
 
-def threeSlopes(x1, y1, x2, y2, x3, y3):
-    return slopeLinear(x1, y1, x2, y2), slopeLinear(x2, y2, x3, y3), slopeLinear(x3, y3, x1, y1)
-
+def threeSlopes(x1, y1, x2, y2, x3, y3, default=True):
+    if default:
+        return slopeLinear(x1, y1, x2, y2), slopeLinear(x2, y2, x3, y3), slopeLinear(x3, y3, x1, y1)
+    return slopeLinear(x1, y1, x2, y2, default=False), slopeLinear(x2, y2, x3, y3, default=False), slopeLinear(x3, y3, x1, y1, default=False)
 
 def Yintercept(x, y, slope):
     return -1 * slope * x + y
 
 
+def threeMidPoints(x1, y1, x2, y2, x3, y3):
+    return MidPointOfALine(x1, y1, x2, y2), MidPointOfALine(x2, y2, x3, y3), MidPointOfALine(x3, y3, x1, y1)
+
+
+def distanceLineAndPoint(m1, b1, x2, y2, default=True):
+    m2 = negativeReciprocal(m1)
+    b2, x, y = -m2*x2+y2, Symbol("x"), Symbol("y")
+    x,y = nonLinearEquation(m1*x+b1-y,m2*x+b2-y)
+    print(x, y, m2, b2)
+    if default:
+        return DistanceFormula(x, y, x2, y2), m2, b2, (x, y)
+    return DistanceFormula(x, y, x2, y2)
+
+
+def threePoints(x1, y1, x2, y2):
+    (slope, b), increment, ans = slopeLinear(x1, y1, x2, y2, default=False), (x1 - x2) / 4, []
+    for i in range(1, 4):
+        ans.append((x1 - increment * i, (x1 - increment * i) * slope + b))
+    return ans 
+
 if __name__ == "__main__":
-    print(circumcenter(-2, 0, 2, 8, 7, 3))
+    # print(DistanceFormula(6, 3, -2/3, 2.333333))
+    # print(PerpendicularBisector(2, 14, 16, 4))
+    # print(negativeReciprocal(-2))
+    print(distanceLineAndPoint(-2, 1, 6, 3))
