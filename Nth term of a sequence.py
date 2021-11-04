@@ -68,6 +68,9 @@ def cubic(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5):
             print("Unable to verify")
     return f"y = {a}x^3 + {b}x^2 + {c}x + {d}"
 
+
+
 # print(linear(1, 4, 2, 6, 3, 8))
-# print(quadratic(1, 2, 2, 4, 3, 10))
-print(cubic(1, 3, 2, 6, 3, 12, 4, 24, 5, 45))
+print(quadratic(4, -1, 5, 3, 6, -1))
+# print(cubic(1, 3, 2, 6, 3, 12, 4, 24, 5, 45))
+
