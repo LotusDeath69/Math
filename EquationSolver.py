@@ -20,5 +20,7 @@ def nonLinearEquation(eq1, eq2):
     [ans1, ans2] = nsolve([eq1, eq2], [x, y], [1, 1])
     return round(ans1, 2), round(ans2, 2)
 
+
 if __name__ == "__main__":  
-    nonLinearEquation(x + y - 2, 2 * x + 2 * y - 4)
+    x, y = nonLinearEquation(2*x+3*y-7, x+2*y-4) 
+    print(f"x = {formatDecimal(x)}, y = {formatDecimal(y)}")

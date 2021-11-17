@@ -70,7 +70,7 @@ def cubic(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5):
 
 
 
-# print(linear(1, 4, 2, 6, 3, 8))
-print(quadratic(4, -1, 5, 3, 6, -1))
+print(linear(0, 50, 200, 80, 400, 110))
+# print(quadratic(4, -1, 5, 3, 6, -1))
 # print(cubic(1, 3, 2, 6, 3, 12, 4, 24, 5, 45))
 

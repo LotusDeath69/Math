@@ -108,7 +108,4 @@ def threePoints(x1, y1, x2, y2):
     return ans 
 
 if __name__ == "__main__":
-    # print(DistanceFormula(6, 3, -2/3, 2.333333))
-    # print(PerpendicularBisector(2, 14, 16, 4))
-    # print(negativeReciprocal(-2))
-    print(distanceLineAndPoint(-2, 1, 6, 3))
+    print(DistanceFormula(-1, 4, 4, -1))
